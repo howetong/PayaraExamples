@@ -3,32 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>SimpleService</artifactId>
+        <artifactId>jarkata</artifactId>
         <groupId>org.howe</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jarkata</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>hello-world-rest</module>
-        <module>simple-rest-example</module>
-        <module>simple-jpa-example</module>
-        <module>spring-data-jpa</module>
-    </modules>
+    <artifactId>simple-rest</artifactId>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.14</version>
-        </dependency>
-    </dependencies>
 
 </project>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <data-source>
+        <name>java:global/SIMPLE-JPA</name>
+        <class-name>org.postgresql.ds.PGConnectionPoolDataSource</class-name>
+        <server-name>localhost</server-name>
+        <port-number>5432</port-number>
+        <database-name>postgres</database-name>
+        <user>${db_username}</user>
+        <password>password</password>
+<!--        <property>-->
+<!--            <name>ssl</name>-->
+<!--            <value>true</value>-->
+<!--        </property>-->
+<!--        <property>-->
+<!--            <name>sslmode</name>-->
+<!--            <value>disable</value>-->
+<!--        </property>-->
+<!--        <property>-->
+<!--            <name>sslfactory</name>-->
+<!--            <value>org.postgresql.ssl.DefaultJavaSSLFactory</value>-->
+<!--        </property>-->
+<!--        <property>-->
+<!--            <name>fish.payara.slow-query-threshold-in-seconds</name>-->
+<!--            <value>5</value>-->
+<!--        </property>-->
+<!--        <property>-->
+<!--            <name>fish.payara.is-connection-validation-required</name>-->
+<!--            <value>true</value>-->
+<!--        </property>-->
+<!--        <property>-->
+<!--            <name>fish.payara.connection-validation-method</name>-->
+<!--            <value>custom-validation</value>-->
+<!--        </property>-->
+<!--        <property>-->
+<!--            <name>fish.payara.validation-classname</name>-->
+<!--            <value>org.glassfish.api.jdbc.validation.PostgresConnectionValidation</value>-->
+<!--        </property>-->
+<!--        <initial-pool-size>8</initial-pool-size>-->
+<!--        <max-pool-size>64</max-pool-size>-->
+<!--        <min-pool-size>8</min-pool-size>-->
+    </data-source>
+</web-app>
