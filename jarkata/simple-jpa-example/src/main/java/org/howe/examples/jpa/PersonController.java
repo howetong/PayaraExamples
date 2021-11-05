@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 @Path("/api/person")
 @ApplicationScoped
+
 public class PersonController {
 
     private static final Logger LOG = Logger.getLogger(PersonController.class.getName());

@@ -9,8 +9,8 @@
         <server-name>localhost</server-name>
         <port-number>5432</port-number>
         <database-name>postgres</database-name>
-        <user>${db_username}</user>
-        <password>password</password>
+        <user>postgres</user>
+        <password>postgres</password>
 <!--        <property>-->
 <!--            <name>ssl</name>-->
 <!--            <value>true</value>-->

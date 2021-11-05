@@ -16,12 +16,27 @@
         <module>simple-rest-example</module>
         <module>simple-jpa-example</module>
         <module>spring-data-jpa</module>
+        <module>api-management</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+
+        <io.swagger.v3.version>2.1.9</io.swagger.v3.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Swagger -->
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${io.swagger.v3.version}</version>
+                <scope>provided</scope><!-- is not used at runtime without swagger servlet -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -29,6 +44,7 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.14</version>
         </dependency>
+
     </dependencies>
 
 </project>

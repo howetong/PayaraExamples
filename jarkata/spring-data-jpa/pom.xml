@@ -28,6 +28,62 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.15.Final</version>
         </dependency>
+
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.openapitools.swagger</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>2.1.6</version>
+                <configuration>
+                    <resourcePackages>
+                        <resourcePackage>${project.groupId}.examples.jpa</resourcePackage>
+                    </resourcePackages>
+                    <outputDirectory>${basedir}/../api-management/src/main/resources/spring-data-jpa</outputDirectory>
+                    <outputFilename>spring-data-jpa-1.0.0</outputFilename>
+                    <outputFormats>JSON</outputFormats>
+                    <prettyPrint>true</prettyPrint>
+                    <!-- general properties of the Swagger mode, @see https://github.com/openapi-tools/swagger-maven-plugin -->
+                    <swaggerConfig>
+                        <servers>
+                            <server>
+                                <url>https://services.exmple.it/base/path</url>
+                                <description>Endpoint URL</description>
+                            </server>
+                        </servers>
+                        <info>
+                            <title>spring-data-jpa</title>
+                            <version>1.0.0</version>
+                            <description>API description</description>
+                            <contact>
+                                <email>e@mail.com</email>
+                                <name>My Name</name>
+                                <url>https://google.com</url>
+                            </contact>
+                            <extensions>
+                                <x-custom-field-1>my-custom-field-1</x-custom-field-1>
+                                <x-custom-field-2>my-custom-field-2</x-custom-field-2>
+                            </extensions>
+                        </info>
+                    </swaggerConfig>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
