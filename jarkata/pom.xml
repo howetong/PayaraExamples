@@ -17,6 +17,8 @@
         <module>simple-jpa-example</module>
         <module>spring-data-jpa</module>
         <module>api-management</module>
+        <module>unit-test-example</module>
+        <module>db-migrate</module>
     </modules>
 
     <properties>
@@ -25,6 +27,21 @@
 
         <io.swagger.v3.version>2.1.9</io.swagger.v3.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>dev</environment>
+                <flyway.url>jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=public</flyway.url>
+                <flyway.user>postgres</flyway.user>
+                <flyway.password>postgres</flyway.password>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencyManagement>
         <dependencies>
@@ -44,7 +61,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.14</version>
         </dependency>
-
     </dependencies>
 
 </project>

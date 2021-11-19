@@ -8,8 +8,8 @@
         <class-name>org.postgresql.ds.PGConnectionPoolDataSource</class-name>
         <server-name>localhost</server-name>
         <port-number>5432</port-number>
-        <database-name>postgres</database-name>
-        <user>${db_username}</user>
-        <password>password</password>
+        <database-name>${database.name}</database-name>
+        <user>${database.user}</user>
+        <password>${database.password}</password>
     </data-source>
 </web-app>
