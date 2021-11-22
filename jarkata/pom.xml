@@ -17,7 +17,6 @@
         <module>simple-jpa-example</module>
         <module>spring-data-jpa</module>
         <module>api-management</module>
-        <module>unit-test-example</module>
         <module>db-migrate</module>
     </modules>
 
