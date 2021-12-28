@@ -1,0 +1,91 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "spring-data-jpa",
+    "description" : "API description",
+    "contact" : {
+      "name" : "My Name",
+      "url" : "https://google.com",
+      "email" : "e@mail.com"
+    },
+    "version" : "1.0.0",
+    "x-custom-field-1" : "my-custom-field-1",
+    "x-custom-field-2" : "my-custom-field-2"
+  },
+  "servers" : [ {
+    "url" : "https://services.exmple.it/base/path",
+    "description" : "Endpoint URL"
+  } ],
+  "tags" : [ {
+    "name" : "Person",
+    "description" : "Person API"
+  } ],
+  "paths" : {
+    "/jpa/api/person" : {
+      "post" : {
+        "tags" : [ "Person" ],
+        "operationId" : "createPerson",
+        "requestBody" : {
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Person"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "*/*" : { }
+            }
+          }
+        }
+      }
+    },
+    "/jpa/api/person/{id}" : {
+      "get" : {
+        "tags" : [ "Person" ],
+        "summary" : "Endpoint that get person",
+        "operationId" : "getPerson",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "*/*" : { }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Person" : {
+        "type" : "object",
+        "properties" : {
+          "address" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -35,6 +35,12 @@
             <artifactId>swagger-annotations</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.microprofile-ext.openapi-ext</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
         <!-- test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -71,11 +77,6 @@
                     <resourcePackages>
                         <resourcePackage>${project.groupId}.examples.jpa</resourcePackage>
                     </resourcePackages>
-                    <outputDirectory>${basedir}/../api-management/src/main/resources/spring-data-jpa</outputDirectory>
-                    <outputFilename>spring-data-jpa-1.0.0</outputFilename>
-                    <outputFormats>JSON</outputFormats>
-                    <prettyPrint>true</prettyPrint>
-                    <!-- general properties of the Swagger mode, @see https://github.com/openapi-tools/swagger-maven-plugin -->
                     <swaggerConfig>
                         <servers>
                             <server>
@@ -101,10 +102,32 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>api-generate</id>
                         <phase>generate-test-resources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/../api-management/src/main/resources/spring-data-jpa</outputDirectory>
+                            <outputFilename>spring-data-jpa-1.0.0</outputFilename>
+                            <outputFormats>JSON</outputFormats>
+                            <prettyPrint>true</prettyPrint>
+                            <!-- general properties of the Swagger mode, @see https://github.com/openapi-tools/swagger-maven-plugin -->
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>openapi</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/resources/META-INF/</outputDirectory>
+                            <outputFilename>openapi</outputFilename>
+                            <outputFormats>JSON</outputFormats>
+                            <prettyPrint>true</prettyPrint>
+                            <!-- general properties of the Swagger mode, @see https://github.com/openapi-tools/swagger-maven-plugin -->
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
