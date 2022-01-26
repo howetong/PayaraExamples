@@ -11,7 +11,7 @@ public class HelloController {
     @GET
     @TraceEndpoint
     public String sayHello() {
-        return "Hello, World!";
+        return "{\"foo\": \"Hello, World\"}";
     }
 
     @GET

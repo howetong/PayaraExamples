@@ -2,6 +2,7 @@ package org.howe.examples.jpa.service;
 
 import org.howe.examples.jpa.entity.Person;
 import org.howe.examples.jpa.entity.PersonDao;
+import org.howe.examples.jpa.entity.Preference;
 
 import javax.inject.Inject;
 
@@ -17,5 +18,10 @@ public class PersonService {
 
     public Person findById(Long id) {
         return personDao.findById(id);
+    }
+
+    public void updatePerson(Person person, Preference preference) {
+        person.setPreference(preference);
+        personDao.save(person);
     }
 }

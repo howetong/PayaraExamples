@@ -22,6 +22,35 @@
   } ],
   "paths" : {
     "/jpa/api/person" : {
+      "put" : {
+        "tags" : [ "Person" ],
+        "operationId" : "updatePersonPreference",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Preference"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "*/*" : { }
+            }
+          }
+        }
+      },
       "post" : {
         "tags" : [ "Person" ],
         "operationId" : "createPerson",
@@ -82,6 +111,21 @@
             "format" : "int64"
           },
           "name" : {
+            "type" : "string"
+          },
+          "preference" : {
+            "$ref" : "#/components/schemas/Preference"
+          }
+        }
+      },
+      "Preference" : {
+        "type" : "object",
+        "properties" : {
+          "experience" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "hobby" : {
             "type" : "string"
           }
         }

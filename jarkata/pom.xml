@@ -13,18 +13,19 @@
     <packaging>pom</packaging>
     <modules>
         <module>hello-world-rest</module>
-        <module>simple-rest-example</module>
         <module>simple-jpa-example</module>
         <module>spring-data-jpa</module>
         <module>api-management</module>
         <module>db-migrate</module>
+        <module>hello-world-test-perform</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-
         <io.swagger.v3.version>2.1.9</io.swagger.v3.version>
+        <gatling-version>3.7.0</gatling-version>
+        <gatling-maven-plugin.version>4.1.6</gatling-maven-plugin.version>
+
+        <skipLTandPTs>true</skipLTandPTs>
     </properties>
 
     <profiles>
@@ -35,9 +36,18 @@
             </activation>
             <properties>
                 <environment>dev</environment>
+                <testTarget>http://localhost:8080/tt</testTarget>
                 <flyway.url>jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=public</flyway.url>
                 <flyway.user>postgres</flyway.user>
                 <flyway.password>postgres</flyway.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>pt</id>
+            <properties>
+                <skipTests>true</skipTests>
+                <skipLTandPTs>false</skipLTandPTs>
             </properties>
         </profile>
     </profiles>
@@ -51,6 +61,18 @@
                 <version>${io.swagger.v3.version}</version>
                 <scope>provided</scope><!-- is not used at runtime without swagger servlet -->
             </dependency>
+
+            <dependency>
+                <groupId>io.gatling.highcharts</groupId>
+                <artifactId>gatling-charts-highcharts</artifactId>
+                <version>${gatling-version}</version>
+                <scope>test</scope>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.gatling</groupId>-->
+<!--                <artifactId>gatling-compiler</artifactId>-->
+<!--                <version>${gatling-version}</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
@@ -61,5 +83,18 @@
             <version>42.2.14</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <defaultGoal>clean verify</defaultGoal>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.gatling</groupId>
+                    <artifactId>gatling-maven-plugin</artifactId>
+                    <version>${gatling-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
